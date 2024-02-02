@@ -8,8 +8,6 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json())
 
-
-
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.e60xkn0.mongodb.net/?retryWrites=true&w=majority`;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -28,6 +26,7 @@ async function run() {
 
     const productCollection = client.db('inventoryManagement').collection('Product')
     const userCollection = client.db('inventoryManagement').collection('users')
+    const paymentCollection = client.db('inventoryManagement').collection('payment')
 
     // get all user data by id
     app.post('/users', async(req, res) =>{
